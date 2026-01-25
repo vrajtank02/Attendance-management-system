@@ -33,9 +33,10 @@ def main():
         elif choice == 3:
             clear_screen()
             operations.view_records()
-
         elif choice == 4:
             operations.save_data()
+            print("Records saved successfully.")
+            print("Exiting the program...")
             break
         
         else:
