@@ -3,7 +3,7 @@ class Student:
     def __init__(self, roll_number, name, class_name):
         self.roll_number = roll_number
         self.name = name
-        self.class_name = class_name  # New Field
+        self.class_name = class_name
         self.__attendance_records = {} 
 
     def mark_attendance(self, date, status):
