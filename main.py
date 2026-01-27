@@ -18,7 +18,7 @@ def main():
         print("1. Add new student")
         print("2. Mark today's attendance")
         print("3. View student's attendance")
-        print("4. Save and Exit")
+        print("4. Exit")
         
         choice = int(input("Enter your choice (1 - 4): "))
 
@@ -32,12 +32,10 @@ def main():
 
         elif choice == 3:
             clear_screen()
-            operations.view_records()
+            operations.view_attendance()
         elif choice == 4:
-            operations.save_data()
-            print("Records saved successfully.")
             print("Exiting the program...")
-            break
+            return
         
         else:
             print("Invalid choice")
