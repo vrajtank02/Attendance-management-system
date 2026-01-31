@@ -20,20 +20,20 @@ def main():
         print("3. View student's attendance")
         print("4. Exit")
         
-        choice = int(input("Enter your choice (1 - 4): "))
+        choice = input("Enter your choice (1 - 4): ")
 
-        if choice == 1:
+        if choice == "1":
             clear_screen()
             operations.add_new_student()
 
-        elif choice == 2:
+        elif choice == "2":
             clear_screen()
             operations.mark_attendance_today()
 
-        elif choice == 3:
+        elif choice == "3":
             clear_screen()
             operations.view_attendance()
-        elif choice == 4:
+        elif choice == "4":
             print("Exiting the program...")
             return
         
