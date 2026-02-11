@@ -1,5 +1,6 @@
 import os
-import operations
+# Ensure operations.py exists in the same folder
+import operations 
 
 def clear_screen():
     """Clears the console screen."""
@@ -10,37 +11,40 @@ def clear_screen():
 
 def main():
     """Main function to run the attendance management system."""
-    operations.load_data()
+    # Attempt to load data, but handle the case where the file/function might fail
+    try:
+        operations.load_data()
+    except Exception as e:
+        print(f"Warning: Could not load data. {e}")
 
     while True:
-        clear_screen()
-        print("Main Menu:")
+        print("\n--- Main Menu ---")
         print("1. Add new student")
         print("2. Mark today's attendance")
         print("3. View student's attendance")
         print("4. Exit")
         
-        choice = int(input("Enter your choice (1 - 4): "))
+        choice = input("Enter your choice (1 - 4): ").strip()
 
-        if choice == 1:
+        if choice == "1":
             clear_screen()
             operations.add_new_student()
 
-        elif choice == 2:
+        elif choice == "2":
             clear_screen()
             operations.mark_attendance_today()
 
-        elif choice == 3:
+        elif choice == "3":
             clear_screen()
             operations.view_attendance()
-        elif choice == 4:
-            print("Exiting the program...")
-            return
+
+        elif choice == "4":
+            print("Exiting the program... Goodbye!")
+            break
         
         else:
-            print("Invalid choice")
-        
-        input("\nPress Enter to continue...")
+            clear_screen()
+            print("Error: Invalid choice. Please enter a number between 1 and 4.")
 
 if __name__ == "__main__":
     main()
