@@ -37,7 +37,7 @@ def load_data():
         print(f"File '{FILE_NAME}' not found. Created new file with headers.")
 
 def add_new_student():
-    """Adds a new student to the system."""
+    """Adds new students to the system."""
     while True:
         try:
             class_name = int(input("Enter Class (1 -- 12): "))
@@ -48,29 +48,36 @@ def add_new_student():
         except ValueError:
             print("Invalid Class. Please enter a number.")
 
-    count = 0
-    for s in students_list:
-        if s.class_name == class_name:
-            count += 1
-    
-    next_number = 101 + count
-    generated_roll_no = int(str(class_name) + str(next_number))
-    
-    print(f"Assigning Roll Number: {generated_roll_no}")
-    
-    while True:
-        name = input("Enter Student Name: ").strip()
-        if name and all(x.isalpha() or x.isspace() for x in name):
-            break
-        else:
-            print("Invalid name. Please use alphabets only.")
-    
-    new_student = Student(generated_roll_no, name, class_name)
-    students_list.append(new_student)
-    
-    _append_to_file(class_name, generated_roll_no, name, "", "")
-    
-    print(f"Success! {name} (Roll: {generated_roll_no}) added to Class {class_name}.")
+    try:
+        total_student = int(input("How many students do you want to add? "))
+    except ValueError:
+        print("Invalid number. Adding 1 by default.")
+        total_student = 1
+
+    for i in range(total_student):
+        count = 0
+        for s in students_list:
+            if s.class_name == class_name:
+                count += 1
+        
+        next_number = 101 + count
+        generated_roll_no = int(str(class_name) + str(next_number))
+        
+        print(f"\nAdding Student {i+1} | Assigning Roll Number: {generated_roll_no}")
+        
+        while True:
+            name = input("Enter Student Name: ").strip()
+            if name and all(x.isalpha() or x.isspace() for x in name):
+                break
+            else:
+                print("Invalid name. Please use alphabets only.")
+        
+        new_student = Student(generated_roll_no, name, class_name)
+        students_list.append(new_student)
+        
+        _append_to_file(class_name, generated_roll_no, name, "", "")
+        
+        print(f"Success! {name} (Roll: {generated_roll_no}) added to Class {class_name}.")
 
 def mark_attendance_today():
     """Marks attendance for students for today."""
