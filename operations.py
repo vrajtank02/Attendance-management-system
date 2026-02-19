@@ -42,6 +42,10 @@ def load_data():
     except FileNotFoundError:
         _save_all_data()
         print(f"File '{FILE_NAME}' not found. Created new file.")
+    except PermissionError:
+        print(f"CRITICAL ERROR: '{FILE_NAME}' is currently open in another program.")
+        print("Please close it and restart the program.")
+        exit()
     input("\nPress enter to continue...")
 
 def add_new_student():

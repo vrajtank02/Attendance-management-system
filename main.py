@@ -45,4 +45,7 @@ def main():
         input("\nPress Enter to return to the main menu...")
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except (KeyboardInterrupt, EOFError):
+        print("\n\nProgram forcibly closed by user. Exiting safely...")
