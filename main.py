@@ -10,6 +10,7 @@ def clear_screen():
 
 def main():
     """Main function to run the attendance management system."""
+    print("Welcome to Attendance management system...")
     operations.load_data()
 
     while True:
@@ -20,7 +21,7 @@ def main():
         print("3. View student's attendance")
         print("4. Exit")
         
-        choice = input("Enter your choice (1 - 4): ")
+        choice = input("Enter your choice (1 - 4): ").strip()
 
         if choice == "1":
             clear_screen()
@@ -33,14 +34,15 @@ def main():
         elif choice == "3":
             clear_screen()
             operations.view_attendance()
+            
         elif choice == "4":
-            print("Exiting the program...")
+            print("Exiting the program...\nGoodbye!")
             return
         
         else:
-            print("Invalid choice")
+            print("Invalid choice. Please enter a number between 1 and 4.")
         
-        input("\nPress Enter to continue...")
+        input("\nPress Enter to return to the main menu...")
 
 if __name__ == "__main__":
     main()
